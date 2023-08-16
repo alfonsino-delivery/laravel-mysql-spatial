@@ -27,7 +27,7 @@ class SpatialTraitTest extends BaseTestCase
         $this->queries = &$this->model->getConnection()->getPdo()->queries;
     }
 
-    public function tearDown()
+    public function tearDown(): void
     {
         $this->model->getConnection()->getPdo()->resetQueries();
     }
@@ -580,6 +580,7 @@ class TestPDO extends PDO
 
     public $counter = 1;
 
+    #[\ReturnTypeWillChange]
     public function prepare($statement, $driver_options = [])
     {
         $this->queries[] = $statement;
@@ -593,6 +594,7 @@ class TestPDO extends PDO
         return $stmt;
     }
 
+    #[\ReturnTypeWillChange]
     public function lastInsertId($name = null)
     {
         return $this->counter++;
